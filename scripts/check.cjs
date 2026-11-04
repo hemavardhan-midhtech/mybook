@@ -9,7 +9,7 @@ for(const image of await page.locator('img').all()){await image.scrollIntoViewIf
 await page.evaluate(()=>scrollTo(0,0));
 assert.equal(await page.locator('.chapters li').count(),5);
 assert.equal(await page.locator('img.official-cover').count(),2);
-assert(await page.locator('img.official-cover').evaluateAll(images=>images.every(i=>i.naturalWidth===712&&i.naturalHeight===1076))); 
+assert(await page.locator('img.official-cover').evaluateAll(images=>images.every(i=>i.naturalWidth===712&&i.naturalHeight===1076)));
 assert.equal(await page.locator('dd').filter({hasText:'978-93-345-7669-6'}).count(),1);
 assert.equal(await page.locator('#purchase-links a, form').count(),0);
 assert(await page.evaluate(()=>[...document.querySelectorAll('a[href^="#"]')].every(a=>document.getElementById(a.hash.slice(1)))));
