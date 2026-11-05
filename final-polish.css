@@ -1,5 +1,5 @@
 /* Final layout rules; explicit image dimensions prevent clipping. */
-.hero{background-image:linear-gradient(90deg,rgba(20,12,22,.78),rgba(20,12,22,.18) 75%),url('./assets/river-evening.png');background-size:cover;background-position:center;background-repeat:no-repeat;min-height:800px;min-height:100svh;padding:150px 6% 85px;align-items:center}
+.hero{background-image:linear-gradient(90deg,rgba(20,12,22,.78),rgba(20,12,22,.18) 75%),url('./assets/river-evening.png?v=2');background-size:cover;background-position:center;background-repeat:no-repeat;min-height:800px;min-height:100svh;padding:150px 6% 85px;align-items:center}
 .hero .hero-art,.hero:before,.hero:after{display:none}
 .hero-content{align-self:center;padding-bottom:0}.hero h1{font-size:clamp(52px,5.5vw,82px)}
 .official-cover-hero{width:min(100%,335px);height:auto;max-height:none;transform:rotate(-2deg)}
