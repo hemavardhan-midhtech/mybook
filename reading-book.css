@@ -11,3 +11,17 @@
 .reflection-prompts{padding-left:22px;font:20px/1.7 Georgia,serif}.reflection-prompts li{padding:12px 0}
 .reading-detail-link{display:inline-block;border-bottom:1px solid #9d7950;color:#702e40;padding:8px 0;margin:15px 0;font-size:15px}
 @media(max-width:700px){.reading-spread{grid-template-columns:1fr;min-height:0}.reading-controls{gap:8px}.reading-controls button{padding:12px;font-size:12px}.reading-status{font-size:10px;max-width:120px}.reflection-prompts{font-size:18px}}
+/* A physical sheet turns around the centre binding; the spread stays still. */
+.reading-spread{position:relative;perspective:2200px;isolation:isolate}
+.turning-sheet{position:absolute;top:0;bottom:0;width:47.619%;left:52.381%;transform-style:preserve-3d;transform-origin:left center;z-index:8;pointer-events:none}
+.turning-sheet.backward{left:0;width:52.381%;transform-origin:right center}
+.sheet-face{position:absolute;inset:0;backface-visibility:hidden;overflow:hidden;background:#fff8eb;border:1px solid #d1bfa3;box-shadow:12px 8px 35px #39271730}
+.sheet-face>div{height:100%;box-sizing:border-box;border-radius:0!important;box-shadow:none!important}
+.sheet-face:after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#5d3f2926,transparent 12%,#fff5 65%,#6c4d3038);border-radius:0 0 15px 0}
+.sheet-back{transform:rotateY(180deg);background:#fff8eb}
+.sheet-back:after{background:linear-gradient(90deg,#6c4d3038,#fff5 35%,transparent 88%,#5d3f2926)}
+.reading-controls{justify-content:center;flex-direction:column;gap:9px}
+.reading-controls .reading-scroll{background:transparent;border:0;border-bottom:1px solid #a98656;border-radius:0;color:#702e40;letter-spacing:.7px;padding:9px 8px;min-height:44px}
+.reading-controls .reading-scroll:hover{background:transparent;color:#48202e;border-color:#48202e}
+.reading-help{font-size:10px;color:#79634f}.reading-status{max-width:none!important}
+@media(max-width:700px){.turning-sheet,.turning-sheet.backward{left:0;top:0;bottom:auto;height:50%;width:100%;transform-origin:left center}.reading-help{text-align:center}.reading-controls{gap:8px}}
