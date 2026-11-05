@@ -1,0 +1,18 @@
+/* Interaction states use transforms, avoiding layout movement. */
+a,button{-webkit-tap-highlight-color:transparent}
+button,a.button,.catalog-links a,.reading-detail-link,.header nav a,.text-link{transition:color .2s,background-color .2s,border-color .2s,box-shadow .2s,transform .2s}
+@media(hover:hover) and (pointer:fine){
+ .catalog-book{transition:box-shadow .35s,border-color .35s,transform .35s}.catalog-book:hover{transform:translateY(-4px);box-shadow:0 18px 35px #5d3c2412;border-color:#ba9864}
+ .catalog-links a:hover,.reading-detail-link:hover{color:#421b2a;border-color:#702e40;transform:translateY(-2px)}
+ .header nav a:hover,.hero .actions a:hover{transform:translateY(-2px);box-shadow:0 6px 18px #100b151a}
+ .footer-top nav a:hover{transform:translateY(-2px)}
+ .journey-card{transition:transform .3s,background-color .3s}.journey-card:hover{transform:translateY(-5px);background:#fffaf180}
+}
+button:active,a.button:active,.header nav a:active,.catalog-links a:active,.text-link:active{transform:translateY(1px) scale(.98)}
+a:focus-visible,button:focus-visible{outline:3px solid #702e40;outline-offset:5px}.header a:focus-visible,.header button:focus-visible,.hero a:focus-visible{outline-color:#edcf8e}
+.catalog-links a,.footer-top nav a,.reading-detail-link{min-height:44px;display:inline-flex;align-items:center}
+.arrival{animation:arrival-ring 1.2s ease-out}@keyframes arrival-ring{0%{outline:2px solid #ad8a5480;outline-offset:8px}100%{outline:2px solid transparent;outline-offset:18px}}
+.menu-toggle[aria-expanded=true]{background:#702e40;color:#fff6e6}
+.reading-scroll[aria-busy=true]{cursor:progress;opacity:.65}
+@media(max-width:700px){.catalog-links{gap:8px 18px}.catalog-links a{font-size:13px}.footer-top nav{gap:4px 18px}.hero .actions{row-gap:12px}.header nav a{min-height:44px}.catalog-book{padding:26px 22px}.reading-help{line-height:1.7;max-width:260px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.arrival{outline:none}}

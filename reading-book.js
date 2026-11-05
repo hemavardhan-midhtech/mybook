@@ -28,6 +28,7 @@
   async function turn(direction) {
     if (busy || index + direction < 0 || index + direction >= pages.length) return;
     busy = true;
+    cue.setAttribute('aria-busy', 'true');
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const oldPage = spread.children[direction > 0 ? 1 : 0].cloneNode(true);
     const oldHeight = spread.getBoundingClientRect().height;
@@ -47,10 +48,14 @@
           {transform:`rotateY(${direction * -125}deg) rotateZ(${direction * -.6}deg)`,filter:'brightness(.82)',offset:.7},
           {transform:`rotateY(${direction * -180}deg)`,filter:'brightness(1)'}
         ],{duration:1050,easing:'cubic-bezier(.3,.05,.2,1)',fill:'forwards'}).finished;
+      } catch (error) {
+        // A cancelled animation still leaves the new spread readable.
+        if (error.name !== 'AbortError') console.warn('Page animation interrupted', error);
       } finally { sheet.remove(); spread.style.minHeight = ''; }
     }
     update();
     busy = false;
+    cue.setAttribute('aria-busy', 'false');
     if (matchMedia('(max-width:700px)').matches) spread.scrollIntoView({behavior:reduced?'instant':'smooth',block:'start'});
   }
   restart.addEventListener('click', () => { if (!busy) { index=0; spread.innerHTML=pages[0]; update(); spread.scrollIntoView({behavior:'instant',block:'start'}); cue.focus({preventScroll:true}); } });
