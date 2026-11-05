@@ -1,4 +1,13 @@
 /* Cinematic edition inspired by the supplied visual reference. */
+.hero{background:#21151b url('./assets/river-evening.png') center/cover no-repeat}
+.hero:before,.hero:after{display:none}
+.hero .hero-art{inset:0;background:linear-gradient(90deg,#180e18a8 0%,#180e1840 58%,#180e1815),linear-gradient(0deg,#160d1870,transparent 35%);z-index:-1}
+.header .wordmark{border-radius:0;background:transparent;width:150px;height:94px;padding:0}
+.header .wordmark img{width:150px;height:94px;object-fit:contain;filter:drop-shadow(0 1px 2px #f9e4bca0)}
+.author .monogram{background:transparent;border:0;border-radius:0;height:auto;min-height:300px}
+.author .monogram:before{display:none}
+.author .monogram>img{width:100%;max-height:370px}
+.author .signature-image{width:min(100%,300px);max-height:100px;object-fit:contain;object-position:left center}
 :root{--wine:#702e40;--gold:#c9a663}
 .header{position:absolute;inset:0 0 auto;height:108px;background:transparent;border:0;color:#fff4df;padding-inline:4%;z-index:5}
 .wordmark{background:#fff8ebed;border-radius:50%;padding:8px;width:88px;height:88px;display:grid;place-items:center}.wordmark img{width:74px;height:64px}
@@ -14,3 +23,5 @@
 @media(min-width:1500px){.hero{padding-left:6%;padding-right:6%}}
 @media(max-width:1000px){.header{padding-inline:4%}.header nav a{padding:9px 12px;font-size:10px}.hero{padding:155px 6% 90px;gap:5%}.hero h1{font-size:64px}.hero .tagline{font-size:21px}.hero .actions{gap:12px}.official-cover-hero{width:320px}}
 @media(max-width:700px){.header{height:94px}.wordmark{width:72px;height:72px;padding:5px}.wordmark img{width:62px;height:58px}.menu-toggle{background:#d0ad70;color:#2c1722;border:0;border-radius:24px;padding:9px 16px}.header nav{top:93px;background:#2c1725;padding:18px 6%;border-color:#c5a26450}.header nav a{font-size:13px;margin-block:3px}.hero{grid-template-columns:1fr;padding:145px 7% 85px;gap:38px;min-height:100svh}.hero:before{inset:0;background-position:center top;opacity:.65}.hero:after{inset:0;background:linear-gradient(0deg,#25121d 0%,#25121d70 65%,#25121d40)}.hero h1{font-size:clamp(49px,12vw,70px);letter-spacing:-2px}.hero-content{padding-bottom:0;align-self:auto}.hero .tagline{font-size:21px}.hero .eyebrow{font-size:9px}.book-scene{padding:0}.official-cover-hero{width:245px;max-height:none}.asset-note{font-size:9px}.hero-bottom{font-size:7px}.hero .actions{flex-wrap:wrap}.hero-note{font-size:11px}}
+
+.hero{background:#21151b url('./assets/river-evening.png') center/cover no-repeat}.hero:before,.hero:after{display:none}.header .wordmark{background:transparent;border-radius:0;width:150px;height:94px}.header .wordmark img{width:150px;height:94px}.hero .hero-art{background:linear-gradient(90deg,#180e18a8,#180e1840 58%,#180e1815),linear-gradient(0deg,#160d1870,transparent 35%)}
