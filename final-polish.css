@@ -1,0 +1,21 @@
+/* Final layout rules; explicit image dimensions prevent clipping. */
+.hero{background-image:linear-gradient(90deg,rgba(20,12,22,.78),rgba(20,12,22,.18) 75%),url('./assets/river-evening.png');background-size:cover;background-position:center;background-repeat:no-repeat;min-height:800px;min-height:100svh;padding:150px 6% 85px;align-items:center}
+.hero .hero-art,.hero:before,.hero:after{display:none}
+.hero-content{align-self:center;padding-bottom:0}.hero h1{font-size:clamp(52px,5.5vw,82px)}
+.official-cover-hero{width:min(100%,335px);height:auto;max-height:none;transform:rotate(-2deg)}
+.book-scene{padding:0}.book-scene:before{display:none}.asset-note{font-size:10px;margin-top:25px}
+.header{height:116px;background:linear-gradient(#1c111b99,transparent);align-items:center}
+.header .wordmark{width:170px;height:108px;background:transparent;filter:none}
+.header .wordmark img{width:170px;height:108px;object-fit:contain;filter:none}
+.header nav a{background:transparent;color:#fff6e6;padding:10px 14px;font-size:12px;border-radius:0;border-bottom:1px solid transparent}
+.header nav a:first-child{background:transparent;border-bottom-color:#c9a663}
+.header nav .nav-detail{background:#c9a663;color:#291922;border-radius:5px;padding:12px 20px}
+.header nav a:hover{background:#fff3;color:#fff6e6;border-bottom-color:#c9a663}
+.hero .actions{gap:18px}.hero .button,.hero .text-link{border-radius:5px;min-height:50px;display:inline-flex;align-items:center;justify-content:center;padding:13px 22px;font-size:13px;line-height:1.5;text-shadow:none}
+.hero .button{background:#d1ad6b;color:#23151b;border:1px solid #d1ad6b}.hero .text-link{background:#22131b66;color:#fff4df;border:1px solid #d8c6ac}.hero .button:hover{background:#e7c68a}.hero .text-link:hover{background:#5e354b}
+.author .monogram{min-height:0;height:auto;overflow:visible;display:block;background:transparent;border:0;border-radius:0}
+.author .monogram>img{display:block;width:100%;height:auto;max-height:none;object-fit:contain}
+.author .signature-image{display:block;width:min(100%,340px);height:auto;max-height:none;object-fit:contain;mix-blend-mode:multiply}
+.story-image img{width:100%;height:470px;object-fit:cover;object-position:65% center;border-radius:5px}.story-image:after{border-radius:5px}.image-caption{bottom:40px}.story-image{padding-bottom:18px}
+@media(max-width:1000px){.header nav{gap:2px}.header nav a{font-size:11px;padding:9px}.header .wordmark,.header .wordmark img{width:140px}.hero h1{font-size:58px}.official-cover-hero{width:290px}}
+@media(max-width:700px){.header{height:100px}.header .wordmark,.header .wordmark img{width:125px;height:88px}.header nav{top:99px;background:#291923}.header nav a{font-size:14px;padding:12px}.header nav a:first-child{border:0}.hero{padding:135px 7% 85px;gap:40px;background-position:60% center}.hero h1{font-size:clamp(45px,12vw,65px)}.hero .tagline{font-size:20px}.official-cover-hero{width:230px}.hero .hero-bottom{font-size:7px}.story-image img{height:340px}.hero .actions{gap:12px}.hero .button,.hero .text-link{font-size:12px;padding:12px 17px}.author .monogram{max-width:340px;margin:auto}.author .signature-image{width:280px}}
