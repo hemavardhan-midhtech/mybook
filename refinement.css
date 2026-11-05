@@ -1,0 +1,33 @@
+/* Literary art direction: warm paper, generous type, quiet depth. */
+.wordmark img{display:block;width:112px;height:75px;object-fit:contain}
+.monogram>img{display:block;width:86%;height:auto;max-height:85%;object-fit:contain;position:relative;z-index:1}
+.signature-image{display:block;width:min(100%,340px);height:auto;mix-blend-mode:multiply;margin-top:24px}
+@media(max-width:700px){.wordmark img{width:96px;height:64px}}
+.wordmark{letter-spacing:0;white-space:nowrap}
+.wordmark span{letter-spacing:1.8px}
+.monogram>span{display:flex;align-items:baseline;gap:.1em;letter-spacing:0;padding-right:0;font-size:76px;line-height:1.2}
+.monogram-v{font-style:normal}
+:root{--paper:#faf6ee;--ink:#302923;--wine:#702e40;--muted:#67594e;--line:#dfd2c0}
+body{font-size:16px;-webkit-font-smoothing:antialiased}
+.header{height:92px;background:#faf6eef5;padding-inline:6%}
+.header nav{font-size:13px;gap:28px}.wordmark{font-size:27px}
+.hero{min-height:740px;background:radial-gradient(ellipse at 80% 35%,#ecd3b5 0,transparent 55%),var(--paper)}
+.hero-art{background:radial-gradient(ellipse at 78% 65%,#9d624b20,transparent 55%);opacity:1}
+.hero-content{max-width:650px}h1{font-size:clamp(56px,5.8vw,92px);line-height:1.07;letter-spacing:-3.5px}
+.eyebrow{font-size:11px;letter-spacing:2.3px}.tagline{font-size:23px;color:#59483e;max-width:480px}
+.hero-note{font-size:12px}.button{font-size:13px;padding:17px 25px;border:1px solid transparent;box-shadow:0 7px 20px #702e4015}.text-link{font-size:13px}
+.book-scene{padding:20px 0 20px 40px}.book-scene:before{content:'';position:absolute;inset:4% -25% -4%;border:1px solid #ad8a5445;border-radius:50% 50% 0 0;transform:rotate(6deg);pointer-events:none}
+.official-cover-hero{width:320px;transform:rotate(-3deg);box-shadow:20px 32px 45px #56382e30,3px 4px 8px #56382e25}
+.asset-note{font-size:10px;letter-spacing:.4px;margin-top:35px}.hero-bottom{font-size:10px}
+.section{padding-block:100px}h2{font-size:clamp(38px,3.6vw,56px);line-height:1.13}
+.story{gap:8%;background:linear-gradient(180deg,#fffaf2,var(--paper))}
+.story-image{padding:0 16px 18px 0}.story-image img{height:490px;object-fit:contain;background:#efe1cb;border-radius:160px 160px 2px 2px}
+.story-image:after{border-radius:160px 160px 2px 2px;z-index:0;pointer-events:none}.story-image img,.image-caption,.illustration-note{position:relative;z-index:1}.image-caption{display:block;position:absolute;bottom:55px;font-size:10px}.illustration-note{position:absolute;bottom:30px}
+.story-copy p:not(.eyebrow),.author-copy>p:not(.eyebrow):not(.author-subtitle){font-size:16px;line-height:1.9;color:#615247}
+.journey{background:#f1e7da}.journey-grid{gap:20px}.journey-card{padding:30px 24px;background:#fffaf25c;border:1px solid #d7caba}.journey-card+.journey-card{border:1px solid #d7caba}.journey-card h3{font-size:25px}.journey-card p{font-size:15px}.card-number{top:15px}
+.inside{background:radial-gradient(ellipse at top left,#8b4154,transparent 70%),#572333}.inside blockquote{font-size:clamp(30px,2.8vw,44px)}.chapters li{padding-block:20px;font-size:21px}.excerpt-source,.chapters .eyebrow{font-size:10px}
+.monogram{background:linear-gradient(135deg,#eee1ce,#f8f0e4);height:380px;border-radius:180px 180px 0 0}.monogram:before{border-radius:170px 170px 0 0}.monogram small{font-size:9px}.author-subtitle{font-size:20px}
+.details{background:#efe5d7}.product{max-width:940px;grid-template-columns:260px 1fr;gap:85px}.official-cover-detail{width:250px}.product h3{font-size:34px}dl{font-size:14px}dl>div{padding-block:12px;grid-template-columns:145px 1fr}dt{font-size:10px}.product-copy .availability{font-size:12px}.product-copy .coming-soon{font-size:14px}
+.connection{background:radial-gradient(ellipse at center,#f0dfc855,transparent 65%)}.connection>p:not(.eyebrow){font-size:16px}.footer-top nav{font-size:13px}.footer-bottom{font-size:11px}.footer-top p{font-size:10px}
+@media(max-width:1000px){.official-cover-hero{width:270px}.book-scene:before{inset:0 -8%}.hero{padding-inline:6%}.product{gap:45px}}
+@media(max-width:700px){.header{height:83px}.header nav{font-size:15px}.hero{padding:55px 7% 85px;gap:42px;min-height:auto}h1{font-size:clamp(46px,12vw,68px);letter-spacing:-2px}.tagline{font-size:21px}.hero .eyebrow{font-size:9px;letter-spacing:1.4px}.book-scene{padding:15px 0}.book-scene:before{inset:0 -12%}.official-cover-hero{width:245px}.asset-note{margin-inline:-20px;font-size:9px}.hero-bottom{font-size:8px}.section{padding-block:68px}.story-image img{height:auto;min-height:280px}.story-copy h2,.author h2{font-size:42px}.journey-card{padding:30px 22px}.journey-card+.journey-card{padding-top:30px}.journey-card+.journey-card .card-number{top:15px}.product{grid-template-columns:1fr;gap:40px}.product h3{font-size:29px}.official-cover-detail{width:225px}.details h2{font-size:37px}dl>div{grid-template-columns:110px 1fr;font-size:13px}.monogram{height:310px}.connection h2{font-size:41px}.footer-top nav{font-size:12px}.footer-bottom{font-size:10px}}
