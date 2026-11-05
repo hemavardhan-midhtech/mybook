@@ -41,3 +41,7 @@
 .header .wordmark .author-wordmark{font:24px/1.2 Georgia,serif;letter-spacing:.1px;margin:0;color:#fff4df}.header .wordmark .author-wordmark-note{font:8px/1.6 Arial,sans-serif;letter-spacing:1.8px;margin-top:9px;color:#e0c28c}@media(max-width:700px){.header .wordmark .author-wordmark{font-size:20px}}
 @media(max-width:360px){.header .wordmark .author-wordmark{font-size:18px}.header .wordmark{max-width:185px}.header .wordmark .author-wordmark-note{font-size:6px!important;letter-spacing:.7px!important}.header{gap:8px}.hero h1{font-size:46px}.hero .actions{gap:10px}.hero .button,.hero .text-link{font-size:11px;padding:12px}.hero .tagline{font-size:19px}}
 .header a:focus-visible,.header button:focus-visible,.hero a:focus-visible{outline:3px solid #edcf8e;outline-offset:5px}.menu-toggle{min-height:44px}.catalog-links a,.footer-top nav a{min-height:44px;display:inline-flex;align-items:center}@media(max-width:1000px){.hero .desktop-break{display:none}}
+/* Navigation CTA: quiet at rest, gold on hover and keyboard focus. */
+.header nav .nav-detail{background:transparent;color:#fff6e6;border:1px solid transparent;transition:background-color .2s,color .2s,border-color .2s}
+.header nav .nav-detail:hover,.header nav .nav-detail:focus-visible{background:#c9a663;color:#291922;border-color:#c9a663}
+@media(prefers-reduced-motion:reduce){.header nav .nav-detail{transition:none}}
