@@ -25,3 +25,5 @@
 .reading-controls .reading-scroll:hover{background:transparent;color:#48202e;border-color:#48202e}
 .reading-help{font-size:10px;color:#79634f}.reading-status{max-width:none!important}
 @media(max-width:700px){.turning-sheet,.turning-sheet.backward{left:0;top:0;bottom:auto;height:50%;width:100%;transform-origin:left center}.reading-help{text-align:center}.reading-controls{gap:8px}}
+.reading-controls .reading-restart{background:transparent;border:0;padding:8px;font-size:11px;text-decoration:underline;min-height:44px;color:#702e40}.reading-controls .reading-restart[hidden]{display:none}
+@media(max-width:700px){.reading-spread{scroll-margin-top:20px}.reading-spread blockquote{font-size:clamp(22px,6.2vw,28px);line-height:1.55}.reading-spread .excerpt,.reading-spread .chapters{padding:30px 23px}.turning-sheet,.turning-sheet.backward{overflow:hidden}}

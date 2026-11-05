@@ -1,5 +1,5 @@
 /* Cinematic edition inspired by the supplied visual reference. */
-.hero{background:#21151b url('./assets/river-evening.png') center/cover no-repeat}
+.hero{background:#21151b url('./assets/river-evening.jpg') center/cover no-repeat}
 .hero:before,.hero:after{display:none}
 .hero .hero-art{inset:0;background:linear-gradient(90deg,#180e18a8 0%,#180e1840 58%,#180e1815),linear-gradient(0deg,#160d1870,transparent 35%);z-index:-1}
 .header .wordmark{border-radius:0;background:transparent;width:150px;height:94px;padding:0}
@@ -13,7 +13,7 @@
 .wordmark{background:#fff8ebed;border-radius:50%;padding:8px;width:88px;height:88px;display:grid;place-items:center}.wordmark img{width:74px;height:64px}
 .header nav{gap:8px}.header nav a{padding:10px 18px;border-radius:30px;background:#f8eee4;color:#392331;font-size:11px;letter-spacing:.5px}.header nav a:first-child,.header nav .nav-detail{background:#c5a264;border:0}.header nav a:hover{background:#e1bf7c;text-decoration:none;color:#2e1724}
 .hero{min-height:850px;min-height:100svh;grid-template-columns:1fr 1fr;gap:6%;padding:165px 6% 100px;background:#26121d;color:#fff4df;isolation:isolate}
-.hero:before{content:'';position:absolute;inset:0 45% 0 0;background:linear-gradient(90deg,#20152290,#25142145),linear-gradient(0deg,#241321 0%,transparent 80%),url('./assets/front-cover.png') center 48%/cover;z-index:-2}
+.hero:before{content:'';position:absolute;inset:0 45% 0 0;background:linear-gradient(90deg,#20152290,#25142145),linear-gradient(0deg,#241321 0%,transparent 80%),url('./assets/front-cover.jpg') center 48%/cover;z-index:-2}
 .hero:after{content:'';position:absolute;inset:0 0 0 52%;background:radial-gradient(ellipse at 60% 30%,#78354880,transparent 70%),linear-gradient(120deg,#27111d,#411c29 55%,#170d14);z-index:-2}
 .hero-art{background:linear-gradient(90deg,transparent 38%,#26121d80 53%,transparent 70%);opacity:1;z-index:-1}
 .hero-content{align-self:end;padding-bottom:45px;max-width:650px}.hero .eyebrow{color:#ead09a;font-size:10px;letter-spacing:2px}.hero h1{font-size:clamp(55px,5.7vw,94px);line-height:1.08;letter-spacing:-2.5px;text-shadow:0 4px 25px #180b1580}.hero h1 em{color:#e1c384}.hero .tagline{color:#f3dfbf;font-size:24px;line-height:1.6;max-width:460px;text-shadow:0 2px 10px #170c14}
@@ -24,4 +24,4 @@
 @media(max-width:1000px){.header{padding-inline:4%}.header nav a{padding:9px 12px;font-size:10px}.hero{padding:155px 6% 90px;gap:5%}.hero h1{font-size:64px}.hero .tagline{font-size:21px}.hero .actions{gap:12px}.official-cover-hero{width:320px}}
 @media(max-width:700px){.header{height:94px}.wordmark{width:72px;height:72px;padding:5px}.wordmark img{width:62px;height:58px}.menu-toggle{background:#d0ad70;color:#2c1722;border:0;border-radius:24px;padding:9px 16px}.header nav{top:93px;background:#2c1725;padding:18px 6%;border-color:#c5a26450}.header nav a{font-size:13px;margin-block:3px}.hero{grid-template-columns:1fr;padding:145px 7% 85px;gap:38px;min-height:100svh}.hero:before{inset:0;background-position:center top;opacity:.65}.hero:after{inset:0;background:linear-gradient(0deg,#25121d 0%,#25121d70 65%,#25121d40)}.hero h1{font-size:clamp(49px,12vw,70px);letter-spacing:-2px}.hero-content{padding-bottom:0;align-self:auto}.hero .tagline{font-size:21px}.hero .eyebrow{font-size:9px}.book-scene{padding:0}.official-cover-hero{width:245px;max-height:none}.asset-note{font-size:9px}.hero-bottom{font-size:7px}.hero .actions{flex-wrap:wrap}.hero-note{font-size:11px}}
 
-.hero{background:#21151b url('./assets/river-evening.png') center/cover no-repeat}.hero:before,.hero:after{display:none}.header .wordmark{background:transparent;border-radius:0;width:150px;height:94px}.header .wordmark img{width:150px;height:94px}.hero .hero-art{background:linear-gradient(90deg,#180e18a8,#180e1840 58%,#180e1815),linear-gradient(0deg,#160d1870,transparent 35%)}
+.hero{background:#21151b url('./assets/river-evening.jpg') center/cover no-repeat}.hero:before,.hero:after{display:none}.header .wordmark{background:transparent;border-radius:0;width:150px;height:94px}.header .wordmark img{width:150px;height:94px}.hero .hero-art{background:linear-gradient(90deg,#180e18a8,#180e1840 58%,#180e1815),linear-gradient(0deg,#160d1870,transparent 35%)}

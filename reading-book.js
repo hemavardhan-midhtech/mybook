@@ -15,11 +15,15 @@
   controls.innerHTML = '<span class="reading-status" role="status" aria-live="polite" aria-atomic="true"></span><button type="button" class="reading-scroll">Scroll to turn the page ↓</button><span class="reading-help">Scroll up to revisit · tap the cue on touch screens</span>';
   book.append(controls);
   const cue = controls.querySelector('.reading-scroll');
+  const restart = document.createElement('button');
+  restart.type = 'button'; restart.className = 'reading-restart'; restart.textContent = 'Return to the opening'; restart.hidden = true;
+  controls.append(restart);
   const status = controls.querySelector('.reading-status');
   let index = 0, busy = false;
   function update() {
     status.textContent = `Spread ${index + 1} of ${pages.length} · Pages ${index * 2 + 1}–${index * 2 + 2}`;
     cue.textContent = index === pages.length - 1 ? 'Scroll to explore more ↓' : 'Scroll to turn the page ↓';
+    restart.hidden = index === 0;
   }
   async function turn(direction) {
     if (busy || index + direction < 0 || index + direction >= pages.length) return;
@@ -47,7 +51,18 @@
     }
     update();
     busy = false;
+    if (matchMedia('(max-width:700px)').matches) spread.scrollIntoView({behavior:reduced?'instant':'smooth',block:'start'});
   }
+  restart.addEventListener('click', () => { if (!busy) { index=0; spread.innerHTML=pages[0]; update(); spread.scrollIntoView({behavior:'instant',block:'start'}); cue.focus({preventScroll:true}); } });
+  let touchStart = null;
+  spread.addEventListener('touchstart', event => {const t=event.touches[0]; touchStart={x:t.clientX,y:t.clientY};},{passive:true});
+  spread.addEventListener('touchend', event => {
+    if (!touchStart) return;
+    const t=event.changedTouches[0], dx=t.clientX-touchStart.x, dy=t.clientY-touchStart.y;
+    touchStart=null;
+    if(Math.abs(dx)>65 && Math.abs(dx)>Math.abs(dy)*1.5) turn(dx<0?1:-1);
+  },{passive:true});
+  controls.querySelector('.reading-help').textContent='Scroll or swipe to turn · tap the cue on touch screens';
   cue.addEventListener('click', () => {
     if(index < pages.length - 1) turn(1);
     else document.querySelector('#author').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});

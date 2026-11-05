@@ -2,7 +2,7 @@
 const authorBooks = [
   {
     id: 'road-back', title: 'The Road Back to Myself',
-    cover: './assets/front-cover.png',
+    cover: './assets/front-cover.jpg',
     genre: 'Contemporary fiction',
     description: 'A heartfelt story about love, loss, friendship, and the quiet courage it takes to start over.',
     status: 'Paperback and Kindle editions planned',
