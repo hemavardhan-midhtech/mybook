@@ -51,3 +51,6 @@ The standalone story, journey, excerpt, author, details, and reader-connection s
 
 ## Author book catalog
 The site now has an author-level header, Books catalog and Updates section. Add approved books to the authorBooks array in books.js with unique story, preview and details URLs (separate static book pages work well for future titles). The catalog renders a grid automatically as titles are added. Keep the static fallback in index.html aligned with the catalog for visitors without JavaScript. Existing story, excerpt and product sections belong to the featured debut novel; do not duplicate their IDs for another title. Never add unannounced titles, dates or store links.
+
+## Release preparation
+Run node scripts/build.cjs after editing CSS. It bundles the seven authored stylesheets in cascade order into site.css, updates the cache version in index.html and validates local HTML asset paths. Commit site.css with the edited sources. The release package allowlist now includes the book reader, catalog, interactions and optimized public images. It excludes private manuscripts and production artwork.
