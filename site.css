@@ -158,6 +158,8 @@ body{font-size:16px;-webkit-font-smoothing:antialiased}
 @media(max-width:700px){.turning-sheet,.turning-sheet.backward{left:0;top:0;bottom:auto;height:50%;width:100%;transform-origin:left center}.reading-help{text-align:center}.reading-controls{gap:8px}}
 .reading-controls .reading-restart{background:transparent;border:0;padding:8px;font-size:11px;text-decoration:underline;min-height:44px;color:#702e40}.reading-controls .reading-restart[hidden]{display:none}
 @media(max-width:700px){.reading-spread{scroll-margin-top:20px}.reading-spread blockquote{font-size:clamp(22px,6.2vw,28px);line-height:1.55}.reading-spread .excerpt,.reading-spread .chapters{padding:30px 23px}.turning-sheet,.turning-sheet.backward{overflow:hidden}}
+/* The book keeps one measured size across all spreads. */
+.reading-spread{align-items:stretch}.reading-spread>.excerpt,.reading-spread>.chapters{height:100%}.reading-controls{min-height:156px}
 
 /* Source: author-site.css */
 .books-section{background:#fffaf1;border-bottom:1px solid #dfd2c0}
@@ -168,6 +170,9 @@ body{font-size:16px;-webkit-font-smoothing:antialiased}
 .catalog-note{margin:30px 0 0;color:#79634f;font-size:13px;font-family:Georgia,serif;font-style:italic}.featured-label{color:#e0c28c}
 @media(min-width:1100px){#book-catalog:has(.catalog-book:nth-child(2)){grid-template-columns:repeat(2,minmax(0,1fr))}#book-catalog:has(.catalog-book:nth-child(2)) .catalog-book{grid-template-columns:125px 1fr;gap:25px;padding:30px}#book-catalog:has(.catalog-book:nth-child(2)) h3{font-size:28px}}
 @media(max-width:700px){.books-intro{display:block}.books-intro>p{margin-top:24px}.catalog-book{grid-template-columns:1fr;padding:28px;gap:30px}.catalog-cover{max-width:180px;margin:auto}.catalog-book h3{font-size:30px}.catalog-links{gap:18px}}
+.catalog-teaser{background:radial-gradient(ellipse at top right,#653647,#261721);border-color:#967348;color:#f7ead4}.catalog-teaser .eyebrow{color:#d6b676}.catalog-teaser h3{color:#fff2dc}.catalog-teaser p{color:#e1cdb5}.catalog-teaser .teaser-note{font-size:12px;color:#d6b676}.teaser-seal{font-size:30px;color:#d6b676}
+.secret-book{aspect-ratio:712/1076;display:flex;align-items:center;justify-content:space-around;flex-direction:column;padding:24px 12px;background:linear-gradient(110deg,#271820,#512b3e 60%,#281b25);border:1px solid #b99559;border-left:7px solid #1c1018;box-shadow:12px 16px 28px #130b1280;position:relative;text-align:center}.secret-book:after{content:'';position:absolute;inset:9px;border:1px solid #ba985b66;pointer-events:none}.secret-book span,.secret-book small{font:8px/1.7 Arial,sans-serif;letter-spacing:1.7px;color:#d6b676}.secret-book b{font:80px/1 Georgia,serif;color:#d6b676;font-style:italic}.catalog-teaser:hover .secret-book{box-shadow:12px 16px 32px #c59c5e22}
+@media(max-width:700px){.secret-book{width:180px;justify-self:center}.catalog-teaser{gap:30px}.reading-controls{min-height:170px}}
 
 /* Source: interactions.css */
 /* Interaction states use transforms, avoiding layout movement. */

@@ -19,7 +19,25 @@
   restart.type = 'button'; restart.className = 'reading-restart'; restart.textContent = 'Return to the opening'; restart.hidden = true;
   controls.append(restart);
   const status = controls.querySelector('.reading-status');
-  let index = 0, busy = false;
+  let index = 0, busy = false, stableHeight = 580, measuredWidth = 0;
+  function sizeBook() {
+    const width = spread.getBoundingClientRect().width;
+    if (!width) return;
+    const measure = document.createElement('div');
+    measure.className = 'reading-spread';
+    measure.setAttribute('aria-hidden', 'true'); measure.inert = true;
+    Object.assign(measure.style, {position:'fixed',left:'-100000px',top:'0',width:`${width}px`,visibility:'hidden',pointerEvents:'none',minHeight:'0',height:'auto'});
+    book.append(measure);
+    let maximum = 580;
+    for (const page of pages) {
+      measure.innerHTML = page;
+      maximum = Math.max(maximum, measure.getBoundingClientRect().height);
+    }
+    measure.remove();
+    stableHeight = Math.ceil(maximum);
+    spread.style.minHeight = `${stableHeight}px`;
+    measuredWidth = width;
+  }
   function update() {
     status.textContent = `Spread ${index + 1} of ${pages.length} · Pages ${index * 2 + 1}–${index * 2 + 2}`;
     cue.textContent = index === pages.length - 1 ? 'Scroll to explore more ↓' : 'Scroll to turn the page ↓';
@@ -51,7 +69,7 @@
       } catch (error) {
         // A cancelled animation still leaves the new spread readable.
         if (error.name !== 'AbortError') console.warn('Page animation interrupted', error);
-      } finally { sheet.remove(); spread.style.minHeight = ''; }
+      } finally { sheet.remove(); spread.style.minHeight = `${stableHeight}px`; }
     }
     update();
     busy = false;
@@ -90,4 +108,11 @@
     if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') { event.preventDefault(); turn(event.key === 'ArrowRight' ? 1 : -1); }
   });
   update();
+  sizeBook();
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(() => {
+      if (Math.abs(spread.getBoundingClientRect().width - measuredWidth) > 1) sizeBook();
+    }).observe(spread);
+  } else window.addEventListener('resize', sizeBook);
+  if (document.fonts) document.fonts.ready.then(sizeBook);
 })();

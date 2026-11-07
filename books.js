@@ -7,13 +7,19 @@ const authorBooks = [
     description: 'A heartfelt story about love, loss, friendship, and the quiet courage it takes to start over.',
     status: 'Paperback and Kindle editions planned',
     story: '#story', preview: '#inside', details: '#details'
-  }
+  },
+  { id: 'next-story', teaser: true }
 ];
 (() => {
   const shelf = document.querySelector('#book-catalog');
   if (!shelf) return;
   const cards = authorBooks.map(book => {
     const card = document.createElement('article'); card.className = 'catalog-book';
+    if (book.teaser) {
+      card.classList.add('catalog-teaser');
+      card.innerHTML = '<div class="secret-book" aria-hidden="true"><span>THE NEXT CHAPTER</span><b>?</b><small>STILL UNDER WRAPS</small></div><div><p class="eyebrow">A PLACE FOR THE NEXT STORY</p><h3>Some stories<br>keep their secrets.</h3><p>The next title stays under wraps for now. A new cover, a new world, another journey.</p><p class="teaser-note">Title and details will be revealed here when ready.</p><span class="teaser-seal" aria-hidden="true">✧</span></div>';
+      return card;
+    }
     const art = document.createElement('a'); art.href = book.details; art.className = 'catalog-cover';
     const img = document.createElement('img'); img.src = book.cover; img.alt = `${book.title} — front cover`; img.width = 712; img.height = 1076; img.loading = 'lazy'; art.append(img);
     const copy = document.createElement('div');
