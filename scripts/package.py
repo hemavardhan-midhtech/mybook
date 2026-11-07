@@ -3,7 +3,7 @@ from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED
 
 root = Path(__file__).resolve().parents[1]
-files = [root / name for name in ('index.html', 'site.css', 'script.js', 'books.js', 'reading-book.js', 'interactions.js', 'sitemap.xml', '.nojekyll')]
+files = [root / name for name in ('index.html', '404.html', 'site.css', 'script.js', 'books.js', 'reading-book.js', 'interactions.js', 'sitemap.xml', '.nojekyll')]
 files += [root / 'assets' / name for name in ('front-cover.jpg', 'river-evening.jpg', 'author-logo.png', 'author-signature.png', 'favicon.svg')]
 for file in files:
     if not file.is_file() or file.is_symlink():
