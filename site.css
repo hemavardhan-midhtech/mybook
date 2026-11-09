@@ -184,6 +184,9 @@ body{font-size:16px;-webkit-font-smoothing:antialiased}
 .author-portrait figcaption{margin-top:18px;color:#702e40;font:18px/1.5 Georgia,serif;text-align:center}
 @media(max-width:700px){.author .author-portrait{max-width:320px}.author-portrait figcaption{font-size:17px}}
 .author-portrait img{background:transparent;border:0;border-radius:0;box-shadow:none}
+/* Transparent masthead; restore the approved portrait presentation. */
+.header .wordmark:has(.header-author-logo){background:transparent;border:0;box-shadow:none;border-radius:0;padding:0}
+.author-portrait img{border-radius:6px;box-shadow:0 18px 40px #56382e20}
 
 /* Source: interactions.css */
 /* Interaction states use transforms, avoiding layout movement. */
