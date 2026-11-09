@@ -19,3 +19,4 @@
 .author-portrait img{display:block;width:100%;height:auto;object-fit:contain;border-radius:6px;box-shadow:0 18px 40px #56382e20}
 .author-portrait figcaption{margin-top:18px;color:#702e40;font:18px/1.5 Georgia,serif;text-align:center}
 @media(max-width:700px){.author .author-portrait{max-width:320px}.author-portrait figcaption{font-size:17px}}
+.author-portrait img{background:transparent;border:0;border-radius:0;box-shadow:none}
