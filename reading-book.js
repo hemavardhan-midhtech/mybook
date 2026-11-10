@@ -15,6 +15,13 @@
   controls.innerHTML = '<span class="reading-status" role="status" aria-live="polite" aria-atomic="true"></span><button type="button" class="reading-scroll">Scroll to turn the page ↓</button><span class="reading-help">Scroll up to revisit · tap the cue on touch screens</span>';
   book.append(controls);
   const cue = controls.querySelector('.reading-scroll');
+  // Visible navigation complements scroll and swipe, including for keyboard and touch users.
+  const pageActions = document.createElement('div');
+  pageActions.className = 'reading-page-actions';
+  pageActions.innerHTML = '<button type="button" class="reading-previous">← Previous</button><button type="button" class="reading-next">Next →</button>';
+  controls.insertBefore(pageActions, controls.querySelector('.reading-help'));
+  const previousButton = pageActions.querySelector('.reading-previous');
+  const nextButton = pageActions.querySelector('.reading-next');
   const restart = document.createElement('button');
   restart.type = 'button'; restart.className = 'reading-restart'; restart.textContent = 'Return to the opening'; restart.hidden = true;
   controls.append(restart);
@@ -39,9 +46,11 @@
     measuredWidth = width;
   }
   function update() {
-    status.textContent = `Spread ${index + 1} of ${pages.length} · Pages ${index * 2 + 1}–${index * 2 + 2}`;
+    status.textContent = `Preview panel ${index + 1} of ${pages.length}`;
     cue.textContent = index === pages.length - 1 ? 'Scroll to explore more ↓' : 'Scroll to turn the page ↓';
     restart.hidden = index === 0;
+    previousButton.disabled = busy || index === 0;
+    nextButton.disabled = busy || index === pages.length - 1;
   }
   async function turn(direction) {
     if (busy || index + direction < 0 || index + direction >= pages.length) return;
@@ -76,6 +85,8 @@
     cue.setAttribute('aria-busy', 'false');
     if (matchMedia('(max-width:700px)').matches) spread.scrollIntoView({behavior:reduced?'instant':'smooth',block:'start'});
   }
+  previousButton.addEventListener('click', () => turn(-1));
+  nextButton.addEventListener('click', () => turn(1));
   restart.addEventListener('click', () => { if (!busy) { index=0; spread.innerHTML=pages[0]; update(); spread.scrollIntoView({behavior:'instant',block:'start'}); cue.focus({preventScroll:true}); } });
   let touchStart = null;
   spread.addEventListener('touchstart', event => {const t=event.touches[0]; touchStart={x:t.clientX,y:t.clientY};},{passive:true});
@@ -98,9 +109,10 @@
     if (rect.height > innerHeight - 100 || rect.top < -100 || rect.top > innerHeight * .4) return;
     const direction = event.deltaY > 0 ? 1 : -1;
     if(index + direction < 0 || index + direction >= pages.length) return;
-    event.preventDefault();
     const now = performance.now();
+    // Do not lock natural page scrolling while a previous animation is still settling.
     if(busy || now - lastWheel < 1300) return;
+    event.preventDefault();
     wheelTotal += event.deltaY;
     if(Math.abs(wheelTotal) > 65) {lastWheel=now; wheelTotal=0;turn(direction);}
   }, {passive:false});
