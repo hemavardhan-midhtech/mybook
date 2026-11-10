@@ -1,56 +1,72 @@
-# The Road Back to Myself
+# The Road Back to Myself — official website
 
-Official book and author website for Hema Vardhan Velaga. A dependency-free, responsive static site with semantic HTML, local illustrations, accessible mobile navigation, and reduced-motion support.
+Author: **Hema Vardhan Velaga**  
+Live project URL: **https://hemavardhan-midhtech.github.io/mybook/**  
+Repository: **hemavardhan-midhtech/mybook**
 
-## Run locally
+This is a dependency-free static author website for *The Road Back to Myself*. It features the approved book cover, a synopsis, an author section, a book catalog, and a short interactive reading preview.
 
-From `/workspace/mybook` (or your checkout directory):
+## Local review
+
+From the repository root, run:
 
 ```sh
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-Open `http://127.0.0.1:8000` locally. No installation, build, database, credentials, or paid services are required. All assets use relative paths, including deployment beneath `/mybook/`.
+Open http://127.0.0.1:8000/ in a browser. For basic static checks, run:
 
-## Edit
+```sh
+node scripts/check-site.cjs
+node --check script.js
+node --check reading-book.js
+node --check books.js
+node --check interactions.js
+```
 
-- `index.html`: approved book copy, sections, chapter list, metadata, and details.
-- `styles.css`: design tokens, layouts, and responsive styles. Typography uses local system fonts (Georgia and Arial) to avoid external font requests.
-- `script.js`: mobile menu, optional scroll reveals, and reusable purchase-link creation. `approvedStores` is deliberately empty. Add only author-approved, verified HTTPS URLs; never imply availability before confirmation. Update the availability note when links are approved.
-- `assets/`: local artwork. The sunset river SVG is an original temporary illustration created for this draft; it has no third-party attribution requirement. It is not the approved book cover.
+These checks do **not** replace real desktop/mobile browser testing.
 
-## Assets and decisions needed before launch
+## Update the website
 
-1. Approved front-cover artwork is installed as `assets/front-cover.png`. Both cover displays now use the exact approved front-cover PNG supplied by the author. Do not put the wraparound artwork, production files, manuscript, or full interior PDF in the public repository. The accessible cover images retain the original 712 × 1076 proportions.
-2. Approve or replace the original temporary river illustration and author biography. Author portrait is optional; a monogram is used now.
-3. Supply verified purchase URLs, confirmed launch information, social profiles, and any approved sample PDF when available. The site currently shows only the approved opening excerpt; there is no sample download, newsletter form, fabricated review, rating, or release date.
-4. After the final public URL and cover are approved, set an absolute `og:image` URL for an optimized JPG/PNG sharing image (SVG support varies by social network), add `og:url` and a canonical link. Current Open Graph image is the approved local cover PNG; make its URL absolute after hosting is confirmed.
+- `index.html`: book text, sections, links, SEO metadata.
+- `styles.css`, `refinement.css`, `cinematic.css`, `final-polish.css`, `reading-book.css`, `author-site.css`, `interactions.css`: source CSS.
+- `site.css`: generated stylesheet that browsers actually load.
+- `script.js`: mobile navigation, scroll animations, future purchase links.
+- `reading-book.js`: interactive **website preview panels**. Only the first panel contains a short approved novel excerpt; the other panels are clearly labeled companion notes and reflections, **not** manuscript pages.
+- `books.js`: current book and future catalog placeholders.
+- `assets/front-cover.jpg`: approved front-cover art, displayed without cropping.
+- `assets/river-evening.jpg`: hero background and story image.
+- `assets/author-logo.png`, `assets/author-portrait.jpg`, `assets/author-signature.png`: author visuals.
 
-## GitHub Pages deployment — prepare only, approval required
+After editing any source CSS, regenerate the served stylesheet:
 
-This source is directly deployable; no build is needed. **Do not enable deployment or push a publishing change without the owner's approval.** No deployment workflow is installed, so a future push cannot accidentally trigger a new workflow from this draft.
+```sh
+node scripts/build.cjs
+node scripts/check-site.cjs
+```
 
-After approval: commit and push the reviewed files to the repository. In GitHub repository Settings → Pages, choose **Deploy from a branch**, select the approved branch (normally `main`) and `/ (root)`, then Save. Keep repository visibility unchanged. GitHub Pages serves this site under the repository path; verify the actual assigned URL, nested-path assets, navigation, and social preview after deployment. To use Actions instead later, add an approved static-site Pages workflow at that time.
+The build script also refreshes the stylesheet cache version in `index.html` and checks local HTML file references. Commit both generated files when they change.
 
-## Review and verification
+## Publication safeguards
 
-Browser smoke checks should cover desktop and mobile rendering, no horizontal overflow, all internal anchor targets, menu open/close and Escape behavior, image loading, reduced motion, JavaScript-disabled content, and `/mybook/` path loading. Confirm title, author, and ISBN `978-93-345-7669-6`. Screenshots in `review/` document the current draft. Core Web Vitals require measurement after hosting; no field-performance claim is made.
+- The site is already configured for GitHub Pages and is reachable at the public project URL above, subject to deployment and host availability.
+- Normal updates to the deployed `main` branch can automatically update the public GitHub Pages website. Review changes on a feature branch first, then merge only after approval.
+- Do not upload the full manuscript, interior PDFs, production wraparound cover, private metadata, or any unapproved assets.
+- Purchase links remain intentionally empty until verified Amazon URLs are approved. Do not imply the book is currently for sale.
+- The approved paperback ISBN is **978-93-345-7669-6**. A Kindle edition is planned; no release date, pricing, ratings, or testimonials are invented.
+- The approved front cover is `assets/front-cover.jpg`, **712 × 1076 px**. Keep its aspect ratio.
+- The social sharing image currently uses the front-cover JPG, not a separate 1200 × 630 share card. Test the preview when a sharing crawler can access the deployed site.
+- Confirm that the author portrait, logo, and signature are approved for public display.
 
-## Future content
+## Launch QA checklist
 
-The standalone story, journey, excerpt, author, details, and reader-connection sections can grow independently. Add only approved announcements and verified reviews to the reader-connection section. A newsletter requires an actual service integration, consent wording, and privacy information; do not add a decorative subscription form.
+1. Check the site at 320, 375, 768, 1024, and 1440 px viewport widths.
+2. Check hero title, CTA, cover aspect ratio, and no horizontal overflow.
+3. Open and close mobile navigation; check keyboard Escape and section anchors.
+4. Test the reading preview's Next/Previous controls, wheel/swipe behavior, restart, and reduced-motion preference.
+5. Verify all images, headings, ISBN, and social preview.
+6. Test with JavaScript disabled; the first short excerpt and core book information should remain accessible.
+7. Confirm that purchase buttons are not shown without verified product URLs.
+8. Review Core Web Vitals and prioritize large image optimization if needed.
 
-## Approved front cover
-
-`assets/front-cover.png` is the exact unmodified PNG extracted from the author-supplied `logo.zip`. Both book displays use semantic HTML images, including when JavaScript is disabled. It is displayed uncropped with its original 712 × 1076 aspect ratio. To update it later, replace only this public front-cover asset with an author-approved file and update dimensions if necessary. The ZIP and wraparound artwork are not included in the site.
-
-## Deployment package
-
-`python3 scripts/package.py` builds `/workspace/deliverables/mybook-website.zip` (or `<checkout-parent>/deliverables/mybook-website.zip` outside this environment). The archive contains only public website files and `.nojekyll`, with `index.html` at the root. It excludes Git metadata, attachments, screenshots, tests, and production files. This command creates a local archive only; it does not publish or push anything.
-
-
-## Author book catalog
-The site now has an author-level header, Books catalog and Updates section. Add approved books to the authorBooks array in books.js with unique story, preview and details URLs (separate static book pages work well for future titles). The catalog renders a grid automatically as titles are added. Keep the static fallback in index.html aligned with the catalog for visitors without JavaScript. Existing story, excerpt and product sections belong to the featured debut novel; do not duplicate their IDs for another title. Never add unannounced titles, dates or store links.
-
-## Release preparation
-Run node scripts/build.cjs after editing CSS. It bundles the seven authored stylesheets in cascade order into site.css, updates the cache version in index.html and validates local HTML asset paths. Commit site.css with the edited sources. The release package allowlist now includes the book reader, catalog, interactions and optimized public images. It excludes private manuscripts and production artwork.
+`scripts/package.py` creates an archive of public deployment files only. It never publishes the site.
