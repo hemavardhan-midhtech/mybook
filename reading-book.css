@@ -29,3 +29,7 @@
 @media(max-width:700px){.reading-spread{scroll-margin-top:20px}.reading-spread blockquote{font-size:clamp(22px,6.2vw,28px);line-height:1.55}.reading-spread .excerpt,.reading-spread .chapters{padding:30px 23px}.turning-sheet,.turning-sheet.backward{overflow:hidden}}
 /* The book keeps one measured size across all spreads. */
 .reading-spread{align-items:stretch}.reading-spread>.excerpt,.reading-spread>.chapters{height:100%}.reading-controls{min-height:156px}
+/* Explicit pager controls keep the reading preview usable without wheel or swipe gestures. */
+.reading-page-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.reading-page-actions button{min-width:125px}
+@media(max-width:700px){.reading-page-actions{width:100%}.reading-page-actions button{flex:1;min-width:0}}
