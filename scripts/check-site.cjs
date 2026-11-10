@@ -8,7 +8,7 @@ const file = name => fs.readFileSync(path.join(root, name), 'utf8');
 const html = file('index.html');
 const reader = file('reading-book.js');
 const css = file('site.css');
-const ids = [...html.matchAll(/\\bid="([^"]+)"/g)].map(m => m[1]);
+const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);
 assert.equal(new Set(ids).size, ids.length, 'Duplicate HTML IDs');
 for (const match of html.matchAll(/href="#([^"]+)"/g)) {
   assert(ids.includes(match[1]), `Missing anchor target: #${match[1]}`);
