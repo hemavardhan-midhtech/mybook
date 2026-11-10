@@ -1,56 +1,38 @@
-# The Road Back to Myself
+# Hema Vardhan Velaga — Author & Books
 
-Official book and author website for Hema Vardhan Velaga. A dependency-free, responsive static site with semantic HTML, local illustrations, accessible mobile navigation, and reduced-motion support.
+Static author website featuring The Road Back to Myself. No external dependencies, database, paid services, external fonts or tracking.
 
-## Run locally
+## Run the review draft
 
-From `/workspace/mybook` (or your checkout directory):
+Run `node scripts/build.cjs` then `node scripts/serve.cjs`.
+Open http://127.0.0.1:4173/mybook/. Stop with Ctrl+C. No install is required. `npm run build` and `npm run preview` are equivalent shortcuts.
+The server exposes only an explicit public-file allowlist, never manuscripts or attachments.
 
-```sh
-python3 -m http.server 8000 --bind 127.0.0.1
-```
+## Source and editing
 
-Open `http://127.0.0.1:8000` locally. No installation, build, database, credentials, or paid services are required. All assets use relative paths, including deployment beneath `/mybook/`.
+- index.html: all homepage sections and SEO metadata.
+- styles.css, refinement.css, cinematic.css, final-polish.css, reading-book.css, author-site.css, interactions.css: authored styles, bundled in this order into site.css. Rebuild after edits and commit the bundle too.
+- script.js: mobile navigation, reveals and verified purchase links. approvedStores stays empty until store links are confirmed.
+- books.js: expandable catalog and requested under-wraps teaser. Future books need approved titles and individual story/preview/detail links.
+- reading-book.js: approved opening, clearly labelled companion notes, stable-size spreads, animated sheet turns, swipe/keyboard controls and reduced motion.
+- interactions.js: focus handling at anchor destinations.
+- 404.html, sitemap.xml, .nojekyll: GitHub Pages support.
 
-## Edit
+## Assets
 
-- `index.html`: approved book copy, sections, chapter list, metadata, and details.
-- `styles.css`: design tokens, layouts, and responsive styles. Typography uses local system fonts (Georgia and Arial) to avoid external font requests.
-- `script.js`: mobile menu, optional scroll reveals, and reusable purchase-link creation. `approvedStores` is deliberately empty. Add only author-approved, verified HTTPS URLs; never imply availability before confirmation. Update the availability note when links are approved.
-- `assets/`: local artwork. The sunset river SVG is an original temporary illustration created for this draft; it has no third-party attribution requirement. It is not the approved book cover.
+The official front-cover PNG is preserved; the optimized JPEG displays it uncropped at its original proportions. Only the front panel is public. The river/cafe scene is AI-generated supporting artwork. The logo and signature were supplied by the author. The solo author portrait is AI-edited from the supplied photo; its room background is retained. The header logo has no backing box, as requested.
+Never publish the wraparound cover, full interior PDF, manuscript, production files or personal records.
 
-## Assets and decisions needed before launch
+## Still needed
 
-1. Approved front-cover artwork is installed as `assets/front-cover.png`. Both cover displays now use the exact approved front-cover PNG supplied by the author. Do not put the wraparound artwork, production files, manuscript, or full interior PDF in the public repository. The accessible cover images retain the original 712 × 1076 proportions.
-2. Approve or replace the original temporary river illustration and author biography. Author portrait is optional; a monogram is used now.
-3. Supply verified purchase URLs, confirmed launch information, social profiles, and any approved sample PDF when available. The site currently shows only the approved opening excerpt; there is no sample download, newsletter form, fabricated review, rating, or release date.
-4. After the final public URL and cover are approved, set an absolute `og:image` URL for an optimized JPG/PNG sharing image (SVG support varies by social network), add `og:url` and a canonical link. Current Open Graph image is the approved local cover PNG; make its URL absolute after hosting is confirmed.
+Verified purchase links, confirmed format availability/release announcement, optional public email/social profiles, and genuine reader reviews when available. No dates, prices, sales, availability or reviews are invented. A sample PDF needs explicit approval; only the short approved excerpt is shown. There is no nonfunctional newsletter form.
 
-## GitHub Pages deployment — prepare only, approval required
+## Draft branch and publishing
 
-This source is directly deployable; no build is needed. **Do not enable deployment or push a publishing change without the owner's approval.** No deployment workflow is installed, so a future push cannot accidentally trigger a new workflow from this draft.
+The existing main branch is already publicly deployed from earlier approved work. The Phase 2 draft is prepared on a separate codex/ development branch. Do not merge, publish this draft, change visibility or Pages settings without explicit author approval. The existing Pages workflow targets main only.
+After approval, merge the reviewed branch into main and verify deployment. Relative assets support /mybook/; canonical and sharing URLs use the existing public address and must change if the domain changes.
 
-After approval: commit and push the reviewed files to the repository. In GitHub repository Settings → Pages, choose **Deploy from a branch**, select the approved branch (normally `main`) and `/ (root)`, then Save. Keep repository visibility unchanged. GitHub Pages serves this site under the repository path; verify the actual assigned URL, nested-path assets, navigation, and social preview after deployment. To use Actions instead later, add an approved static-site Pages workflow at that time.
+## Checks and packaging
 
-## Review and verification
-
-Browser smoke checks should cover desktop and mobile rendering, no horizontal overflow, all internal anchor targets, menu open/close and Escape behavior, image loading, reduced motion, JavaScript-disabled content, and `/mybook/` path loading. Confirm title, author, and ISBN `978-93-345-7669-6`. Screenshots in `review/` document the current draft. Core Web Vitals require measurement after hosting; no field-performance claim is made.
-
-## Future content
-
-The standalone story, journey, excerpt, author, details, and reader-connection sections can grow independently. Add only approved announcements and verified reviews to the reader-connection section. A newsletter requires an actual service integration, consent wording, and privacy information; do not add a decorative subscription form.
-
-## Approved front cover
-
-`assets/front-cover.png` is the exact unmodified PNG extracted from the author-supplied `logo.zip`. Both book displays use semantic HTML images, including when JavaScript is disabled. It is displayed uncropped with its original 712 × 1076 aspect ratio. To update it later, replace only this public front-cover asset with an author-approved file and update dimensions if necessary. The ZIP and wraparound artwork are not included in the site.
-
-## Deployment package
-
-`python3 scripts/package.py` builds `/workspace/deliverables/mybook-website.zip` (or `<checkout-parent>/deliverables/mybook-website.zip` outside this environment). The archive contains only public website files and `.nojekyll`, with `index.html` at the root. It excludes Git metadata, attachments, screenshots, tests, and production files. This command creates a local archive only; it does not publish or push anything.
-
-
-## Author book catalog
-The site now has an author-level header, Books catalog and Updates section. Add approved books to the authorBooks array in books.js with unique story, preview and details URLs (separate static book pages work well for future titles). The catalog renders a grid automatically as titles are added. Keep the static fallback in index.html aligned with the catalog for visitors without JavaScript. Existing story, excerpt and product sections belong to the featured debut novel; do not duplicate their IDs for another title. Never add unannounced titles, dates or store links.
-
-## Release preparation
-Run node scripts/build.cjs after editing CSS. It bundles the seven authored stylesheets in cascade order into site.css, updates the cache version in index.html and validates local HTML asset paths. Commit site.css with the edited sources. The release package allowlist now includes the book reader, catalog, interactions and optimized public images. It excludes private manuscripts and production artwork.
+Review desktop/tablet/phone layouts, menu and Escape, internal links, image loading, keyboard focus, reduced motion, JavaScript-free core content and nested /mybook/ paths. Confirm title, author and ISBN 978-93-345-7669-6. Browser smoke checks and asset sizes do not establish formal accessibility certification or field Core Web Vitals.
+`python scripts/package.py` creates a ZIP using the explicit public-file allowlist and does not publish. Review screenshots remain in review/ and are excluded from packages.

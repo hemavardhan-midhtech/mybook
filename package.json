@@ -1,0 +1,1 @@
+{"name":"hema-vardhan-author-website","private":true,"scripts":{"build":"node scripts/build.cjs","preview":"node scripts/serve.cjs"}}
