@@ -13,7 +13,7 @@ assert.equal(new Set(ids).size, ids.length, 'Duplicate HTML IDs');
 for (const match of html.matchAll(/href="#([^"]+)"/g)) {
   assert(ids.includes(match[1]), `Missing anchor target: #${match[1]}`);
 }
-for (const match of html.matchAll(/(?:src|href)="\\.\\/([^"?#]+)(?:[?#][^"]*)?"/g)) {
+for (const match of html.matchAll(/(?:src|href)="\.\/([^"?#]+)(?:[?#][^"]*)?"/g)) {
   assert(fs.existsSync(path.join(root, match[1])), `Missing local file: ${match[1]}`);
 }
 assert(html.includes('<h1>The Road<br>Back to <em>Myself</em></h1>'), 'Hero title must match the book title');
