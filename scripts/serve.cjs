@@ -1,0 +1,6 @@
+// Local review server: expose only explicit public website files.
+const http=require('node:http'),fs=require('node:fs/promises'),path=require('node:path');
+const root=path.resolve(__dirname,'..');
+const allowed=new Set(['index.html','404.html','site.css','script.js','books.js','reading-book.js','interactions.js','sitemap.xml','.nojekyll','assets/front-cover.jpg','assets/river-evening.jpg','assets/author-logo.png','assets/author-signature.png','assets/author-portrait.jpg','assets/favicon.svg']);
+const types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.jpg':'image/jpeg','.png':'image/png','.svg':'image/svg+xml','.xml':'application/xml'};
+http.createServer(async(req,res)=>{try{let name=decodeURIComponent(new URL(req.url,'http://localhost').pathname).replace(/^\/mybook(?=\/|$)/,'').replace(/^\//,'');if(!name)name='index.html';const found=allowed.has(name);if(!found)name='404.html';const data=await fs.readFile(path.join(root,name));res.writeHead(found?200:404,{'Content-Type':types[path.extname(name)]||'text/plain','Cache-Control':'no-store'});res.end(req.method==='HEAD'?undefined:data);}catch{res.writeHead(400).end('Unable to load page');}}).listen(4173,'127.0.0.1',()=>console.log('Review: http://127.0.0.1:4173/mybook/'));
